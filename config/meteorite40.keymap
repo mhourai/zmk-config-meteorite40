@@ -3,6 +3,36 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+// OS設定を日本語キーボードのまま使用するための変換定義
+
+#define JP_DQUOTE       AT                // "
+#define JP_AMPERSAND    CARET             // &
+#define JP_QUOTE        AMPERSAND         // '
+#define JP_EQUAL        UNDER             // =
+#define JP_CARET        EQUAL             // ^
+#define JP_YEN          0x89              // ¥
+#define JP_PLUS         COLON             // +
+#define JP_TILDE        PLUS              // ~
+#define JP_PIPE         LS(0x89)          // |
+#define JP_AT           LEFT_BRACKET      // @
+#define JP_COLON        SINGLE_QUOTE      // :
+#define JP_ASTERISK     DOUBLE_QUOTES     // *
+#define JP_BACKQUOTE    LEFT_BRACE        // `
+#define JP_UNDERSCORE   LS(0x87)          // _
+#define JP_LBRACKET     RIGHT_BRACKET     // [
+#define JP_RBRACKET     BACKSLASH         // ]
+#define JP_LPAREN       ASTERISK          // (
+#define JP_RPAREN       LEFT_PARENTHESIS  // )
+#define JP_LBRACE       RIGHT_BRACE       // {
+#define JP_RBRACE       PIPE              // }
+#define JP_KANA         LANGUAGE_1        // かな
+#define JP_EISU         LANGUAGE_2        // 英数
+#define JP_HANZEN       GRAVE             // 半角/全角
+
+// #includeのあとのあたりにスクロール量変更の定義を追記
+
+
+
 &mt { 
     flavor = "tap-preferred"; // change hold to tap
     tapping-term-ms = <200>;
@@ -15,56 +45,65 @@
     quick-tap-ms = <150>; // change 200 to 150
 };
 
-/ { 
-    combos {
-        compatible = "zmk,combos";
+/ {
+    combos { compatible = "zmk,combos"; };
 
-        lang1 {
-            bindings = <&kp LANG1>;
-            key-positions = <12 13>; /* D + F */
-            layers = <0>;
+    // combosやmacrosと同じ階層に以下のbihaviorsを追記
+    // スクロール方向を逆にしたい場合は <&msc SCRL_DOWN> と <&msc SCRL_UP> を入れ替えてください
+
+    behaviors {
+        encoder_msc_down_up: encoder_msc_down_up {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "ENCODER_MSC_DOWN_UP";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+
+            tap-ms = <20>;
         };
 
-        lang2 {
-            bindings = <&kp LANG2>;
-            key-positions = <16 17>; /* J + K */
-            layers = <0>;
+        tog_off: toggle_layer_off {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer Off";
+            toggle-mode = "off";
         };
 
-        esc {
-            bindings = <&kp ESCAPE>;
-            key-positions = <20 21>; /* Z + X */
-            layers = <0>;
+        mt_exit_AML_on_tap: mt_exit_AML_on_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MT_exit_AML_ON_TAP";
+            bindings = <&kp>, <&kp_exit_AML>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+            quick-tap-ms = <200>;
         };
 
-        tab {
-            bindings = <&kp TAB>;
-            key-positions = <0 1>; /* Q + W */
-            layers = <0>;
+        td_mt: tap_dance_mod_tap {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&lt LEFT_SHIFT GRAVE>, <&kp LANGUAGE_1>;
+        };
+    };
+
+    macros {
+        exit_AML: exit_AML {
+            compatible = "zmk,behavior-macro";
+            wait-ms = <0>;
+            tap-ms = <0>;
+            #binding-cells = <0>;
+            bindings = <&tog_off MOUSE>;
+            label = "exit_AML";
         };
 
-        home {
-            bindings = <&kp HOME>;
-            key-positions = <16 17>; /* J + K (on layer 2) */
-            layers = <2>;
-        };
-
-        end {
-            bindings = <&kp END>;
-            key-positions = <18 19>; /* L + - (on layer 2) */
-            layers = <2>;
-        };
-
-        ctrl_home {
-            bindings = <&kp LC(HOME)>;
-            key-positions = <16 18>; /* J + L (on layer 2) */
-            layers = <2>;
-        };
-
-        ctrl_end {
-            bindings = <&kp LC(END)>;
-            key-positions = <17 19>; /* K + - (on layer 2) */
-            layers = <2>;
+        kp_exit_AML: kp_exit_AML {
+            compatible = "zmk,behavior-macro-one-param";
+            wait-ms = <0>;
+            tap-ms = <0>;
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &exit_AML>;
+            label = "KP_exit_AML";
         };
     };
 
@@ -72,7 +111,7 @@
         compatible = "zmk,keymap";
         layout = &LAYOUT_2U_SPACE;
 
-        win_default_layer {
+        default_layer {
             display-name = "BASE";
             bindings = <
                 &kp Q        &kp W       &kp E        &kp R        &kp T                                 &kp Y        &kp U       &kp I       &kp O  &kp P
@@ -86,12 +125,12 @@
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>; // RE1: volume down/up
         };
 
-        layer_1 {
-            display-name = "SYMBOLS";
+        arrow-character {
+            display-name = "arrow-character";
             bindings = <
-                &kp EXCL   &kp AT    &kp HASH  &kp DLLR  &kp PRCNT                       &none      &kp LPAR   &kp RPAR   &kp LBKT   &kp RBKT
-                &kp CARET  &kp AMPS  &kp STAR  &kp BSLH  &kp PIPE                        &kp SEMI   &kp COLON  &kp SQT    &kp DQT    &kp EQUAL
-                &none      &none     &none     &none     &none      &mkp MB4  &mkp MB5   &kp GRAVE  &kp TILDE  &kp LBRC   &kp RBRC   &kp PLUS
+&kp ESC        &kp EXCLAMATION  &kp AT_SIGN  &kp HASH           &kp DOLLAR                                               &kp DOUBLE_QUOTES  &none             &kp UP_ARROW   &kp JP_YEN        &kp BACKSPACE
+&kp AMPERSAND  &kp PERCENT      &kp CARET    &kp ASTERISK       &kp LEFT_PARENTHESIS                                     &kp PLUS           &kp LEFT_ARROW    &kp DOWN       &kp RIGHT         &kp LEFT_BRACKET
+&kp PLUS       &kp RIGHT_BRACE  &kp PIPE     &kp RIGHT_BRACKET  &kp BACKSLASH         &kp JP_UNDERSCORE      &kp UNDER   &kp SEMI           &kp SINGLE_QUOTE  &kp LESS_THAN  &kp GREATER_THAN  &kp JP_PIPE
                                      &trans     &trans    &trans    &trans    &trans     &trans    &kp DEL     &trans
             >;
 
