@@ -5,7 +5,7 @@ manifest:
     - name: iwk7273
       url-base: https://github.com/iwk7273
     - name: prospector
-      url-base: https://github.com/t-ogura
+      url-base: https://github.com/mhourai
   projects:
     - name: zmk
       remote: zmkfirmware
