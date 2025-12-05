@@ -5,7 +5,7 @@ manifest:
     - name: iwk7273
       url-base: https://github.com/iwk7273
     - name: prospector
-      url-base: https://github.com/mhourai
+      url-base: https://github.com/mhourai
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -22,10 +22,10 @@ manifest:
       revision: main
     - name: zmk-feature-scaling
       remote: iwk7273
-      revision: main
+     revision: main
     - name: prospector-zmk-module
-      remote: prospector
-      revision: v2.0.0
-      path: modules/prospector-zmk-module
+      remote: prospector
+      revision: v2.0.0
+      path: modules/prospector-zmk-module
   self:
     path: config
