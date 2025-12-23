@@ -21,6 +21,15 @@
     transform = <&transform_225u_space_double>;
 };
 
+#AMLをキープし続けるキー（マウスキー）を登録
+&zip_temp_layer {
+    excluded-positions = <
+        25
+        26
+    >;
+};
+
+
 / {
     chosen {
         zmk,kscan = &meteorite40_scan;
