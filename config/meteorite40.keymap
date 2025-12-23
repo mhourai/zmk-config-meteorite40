@@ -96,11 +96,6 @@
 &kp LWIN          &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &mkp MB1  &mkp MB2  &lt 2 ENTER  &lt 1 SPACE  &kp RALT
             >;
 
-            sensor-bindings =
-                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
-
             // RE1: volume down/up
             //<&mouse_scroll SCRL_LEFT SCRL_RIGHT>,
             //<&mouse_scroll SCRL_UP SCRL_DOWN>;
@@ -114,11 +109,6 @@
 &kp PLUS       &kp RIGHT_BRACE  &kp PIPE   &kp RIGHT_BRACKET  &kp BACKSLASH         &mkp MB4           &kp UNDER  &kp SEMI  &kp SINGLE_QUOTE  &kp LESS_THAN     &kp GREATER_THAN  &kp PLUS
 &trans         &trans           &trans     &trans             &trans                &trans             &kp DEL    &trans
             >;
-
-            sensor-bindings =
-                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // RE1: volume down/up
             //<&mouse_scroll SCRL_LEFT SCRL_RIGHT>,
@@ -134,11 +124,6 @@
 &trans     &trans  &trans   &trans   &trans   &trans           &trans           &trans
             >;
 
-            sensor-bindings =
-                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
-
             // RE1: volume down/up
         };
 
@@ -150,11 +135,6 @@
 &none   &none   &none   &none   &none   &none          &none          &bt BT_CLR_ALL  &none          &none          &none  &none
 &trans  &trans  &trans  &trans  &trans  &trans         &trans         &trans
             >;
-
-            sensor-bindings =
-                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // RE1: volume down/up
         };
