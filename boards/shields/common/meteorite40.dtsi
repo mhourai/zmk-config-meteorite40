@@ -157,7 +157,7 @@
         device = <&trackball>;
 
         input-processors = <&sensor_rotation>,
-                           <&motion_scaler>;
+                           <&motion_scaler>,
                             <&zip_temp_layer 4 10000>;
 
         scroll {
