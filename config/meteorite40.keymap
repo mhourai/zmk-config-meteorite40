@@ -130,7 +130,7 @@
         config {
             display-name = "FUNCTION";
             bindings = <
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3   &bt BT_SEL 4
+&none   &none   &none   &none   &none   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3   &bt BT_SEL 4
 &none   &none   &none   &none   &none   &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2   &bt BT_DISC 3  &bt BT_DISC 4
 &none   &none   &none   &none   &none   &none          &none          &bt BT_CLR_ALL  &none          &none          &none  &none
 &trans  &trans  &trans  &trans  &trans  &trans         &trans         &trans
@@ -141,10 +141,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans    &trans    &trans    &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans    &trans    &trans    &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans    &trans    &mkp MB3  &mkp MB4  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &mkp MB1  &mkp MB2  &trans    &trans    &trans
             >;
         };
 
