@@ -104,6 +104,11 @@
             key-positions = <17 19>; /* K + - (on layer 2) */
             layers = <2>;
         };
+
+        scrool {
+            bindings = <&mo 5>;
+            key-positions = <26 25>;
+        };
     };
 
     keymap {
@@ -113,10 +118,10 @@
         win_default_layer {
             display-name = "BASE";
             bindings = <
-&lt 3 Q           &kp W         &kp E                 &kp R     &kp T     &kp Y        &kp U        &kp I     &kp O  &kp P
-&mt LSHIFT A      &kp S         &kp D                 &kp F     &kp G     &kp H        &kp J        &kp K     &kp L  &mt RIGHT_SHIFT MINUS
-&mt LEFT_SHIFT Z  &kp X         &kp C                 &kp V     &kp B     &lt 6 COLON  &lt 3 SEMI   &kp N     &kp M  &kp COMMA              &kp DOT  &mt RIGHT_SHIFT SLASH
-&kp LWIN          &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &td_mt   &lt 5 DELETE  &lt 2 ENTER  &lt 1 SPACE  &kp RALT
+&lt 3 Q           &kp W         &kp E                 &kp R                 &kp T         &kp Y        &kp U        &kp I     &kp O  &kp P
+&mt LSHIFT A      &kp S         &kp D                 &kp F                 &kp G         &kp H        &kp J        &kp K     &kp L  &mt RIGHT_SHIFT MINUS
+&mt LEFT_SHIFT Z  &kp X         &kp C                 &kp V                 &kp B         &lt 6 COLON  &lt 3 SEMI   &kp N     &kp M  &kp COMMA              &kp DOT  &mt RIGHT_SHIFT SLASH
+&kp LWIN          &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &mt LEFT_SHIFT GRAVE  &lt 5 DELETE  &lt 2 ENTER  &lt 1 SPACE  &kp RALT
             >;
 
             // RE1: volume down/up
@@ -153,10 +158,10 @@
         config {
             display-name = "FUNCTION";
             bindings = <
-&cust_cfg CCFG_CPI_DN  &cust_cfg CCFG_CPI_UP  &cust_cfg CCFG_ROT_DN   &cust_cfg CCFG_ROT_UP   &cust_cfg CCFG_SCALE_TOG   &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3   &bt BT_SEL 4
-&cust_cfg CCFG_SDIV_DN &cust_cfg CCFG_SDIV_UP &cust_cfg CCFG_SCRH_TOG &cust_cfg CCFG_SCRV_TOG   &none   &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2   &bt BT_DISC 3  &bt BT_DISC 4
-&cust_cfg CCFG_SAVE    &cust_cfg CCFG_RESET   &none   &none   &none   &none          &none          &bt BT_CLR_ALL  &none          &none          &none  &bootloader
-&trans  &trans  &trans  &trans  &trans  &trans         &trans         &trans
+&cust_cfg CCFG_CPI_DN   &cust_cfg CCFG_CPI_UP   &cust_cfg CCFG_ROT_DN    &cust_cfg CCFG_ROT_UP    &cust_cfg CCFG_SCALE_TOG  &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3   &bt BT_SEL 4
+&cust_cfg CCFG_SDIV_DN  &cust_cfg CCFG_SDIV_UP  &cust_cfg CCFG_SCRH_TOG  &cust_cfg CCFG_SCRV_TOG  &none                     &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2   &bt BT_DISC 3  &bt BT_DISC 4
+&cust_cfg CCFG_SAVE     &cust_cfg CCFG_RESET    &none                    &none                    &none                     &none          &none          &bt BT_CLR_ALL  &none          &none          &none  &bootloader
+&trans                  &trans                  &trans                   &trans                   &trans                    &trans         &trans         &trans
             >;
 
             // RE1: volume down/up
