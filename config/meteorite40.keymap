@@ -97,11 +97,6 @@
             key-positions = <17 19>; /* K + - (on layer 2) */
             layers = <2>;
         };
-
-        test {
-            bindings = <&none>;
-            key-positions = <25 26>;
-        };
     };
 
     keymap {
