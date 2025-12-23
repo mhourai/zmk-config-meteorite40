@@ -45,6 +45,13 @@
 
             tap-ms = <25>;
         };
+
+        td_mt: tap_dance_mod_tap {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&lt LEFT_SHIFT GRAVE>, <&kp LANGUAGE_1>;
+        };
     };
 
     combos {
@@ -109,7 +116,7 @@
 &lt 3 Q           &kp W         &kp E                 &kp R     &kp T     &kp Y        &kp U        &kp I     &kp O  &kp P
 &mt LSHIFT A      &kp S         &kp D                 &kp F     &kp G     &kp H        &kp J        &kp K     &kp L  &mt RIGHT_SHIFT MINUS
 &mt LEFT_SHIFT Z  &kp X         &kp C                 &kp V     &kp B     &lt 6 COLON  &lt 3 SEMI   &kp N     &kp M  &kp COMMA              &kp DOT  &mt RIGHT_SHIFT SLASH
-&kp LWIN          &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &mkp MB1  &mkp MB2  &lt 2 ENTER  &lt 1 SPACE  &kp RALT
+&kp LWIN          &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &td_mt   &lt 5 DELETE  &lt 2 ENTER  &lt 1 SPACE  &kp RALT
             >;
 
             // RE1: volume down/up
