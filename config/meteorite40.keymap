@@ -1,13 +1,14 @@
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/keys.h>
 #include <behaviors/custom_config.dtsi>
 #include <dt-bindings/zmk/custom_config.h>
 
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 200
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
-&mt { 
+&mt {
     flavor = "tap-preferred"; // change hold to tap
     tapping-term-ms = <200>;
     quick-tap-ms = <150>; // change 200 to 150
@@ -19,12 +20,13 @@
     quick-tap-ms = <150>; // change 200 to 150
 };
 
-/ { 
+/ {
     behaviors {
         mouse_scroll: mouse_wheel {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
             bindings = <&msc>, <&msc>;
+
             tap-ms = <25>;
         };
     };
@@ -88,79 +90,85 @@
         win_default_layer {
             display-name = "BASE";
             bindings = <
-                &kp Q        &kp W       &kp E        &kp R        &kp T                                 &kp Y        &kp U       &kp I       &kp O  &kp P
-                &mt LSHIFT A &kp S       &kp D        &kp F        &kp G                                 &kp H        &kp J       &kp K       &kp L  &kp MINUS
-                &kp Z        &kp X       &kp C        &kp V        &kp B        &mkp MB1     &mkp MB2    &kp N        &kp M       &kp COMMA   &kp DOT  &lt 4 SLASH
-                                    &kp LWIN  &mt LCTRL TAB  &mt LSHIFT SPACE  &lt 1 SPACE  &lt 2 ENTER  &lt 2 ENTER  &lt 3 BSPC  &kp RALT
+&kp Q             &kp W         &kp E           &kp R     &kp T     &kp Y        &kp U        &kp I     &kp O  &kp P
+&mt LSHIFT A      &kp S         &kp D           &kp F     &kp G     &kp H        &kp J        &kp K     &kp L  &kp MINUS
+&mt LEFT_SHIFT Z  &kp X         &kp C           &kp V     &kp B     &kp COLON    &kp SEMI     &kp N     &kp M  &kp COMMA  &kp DOT  &lt 4 SLASH
+&kp LWIN          &kp LEFT_ALT  &mt LSHIFT TAB  &mkp MB1  &mkp MB2  &lt 2 ENTER  &lt 1 SPACE  &kp RALT
             >;
 
             sensor-bindings =
-                <&inc_dec_kp LC(MINUS) LC(EQUAL)>, // RE0: ctrl + - / +,,,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>; // RE1: volume down/up
-                //<&mouse_scroll SCRL_LEFT SCRL_RIGHT>,
-			    //<&mouse_scroll SCRL_UP SCRL_DOWN>;
-
+                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
+                // RE0: ctrl + - / +,,,,
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+ // RE1: volume down/up
+            //<&mouse_scroll SCRL_LEFT SCRL_RIGHT>,
+            //<&mouse_scroll SCRL_UP SCRL_DOWN>;
         };
 
-        layer_1 {
+        arrow-character {
             display-name = "SYMBOLS";
             bindings = <
-                &kp EXCL   &kp AT    &kp HASH  &kp DLLR  &kp PRCNT                       &none      &kp LPAR   &kp RPAR   &kp LBKT   &kp RBKT
-                &kp CARET  &kp AMPS  &kp STAR  &kp BSLH  &kp PIPE                        &kp SEMI   &kp COLON  &kp SQT    &kp DQT    &kp EQUAL
-                &none      &none     &none     &none     &none      &mkp MB4  &mkp MB5   &kp GRAVE  &kp TILDE  &kp LBRC   &kp RBRC   &kp PLUS
-                                     &trans     &trans    &trans    &trans    &trans     &trans    &kp DEL     &trans
+&kp ESCAPE     &kp EXCLAMATION  &kp AT     &kp HASH           &kp DOLLAR            &kp DOUBLE_QUOTES  &none      &kp UP    &none             &kp BACKSPACE
+&kp AMPERSAND  &kp PERCENT      &kp CARET  &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp PLUS           &kp LEFT   &kp DOWN  &kp RIGHT         &kp LEFT_BRACKET
+&kp PLUS       &kp RIGHT_BRACE  &kp PIPE   &kp RIGHT_BRACKET  &kp BACKSLASH         &mkp MB4           &kp UNDER  &kp SEMI  &kp SINGLE_QUOTE  &kp LESS_THAN     &kp GREATER_THAN  &kp PLUS
+&trans         &trans           &trans     &trans             &trans                &trans             &kp DEL    &trans
             >;
 
             sensor-bindings =
-                <&inc_dec_kp LC(MINUS) LC(EQUAL)>, // RE0: ctrl + - / +,,,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>; // RE1: volume down/up
-                //<&mouse_scroll SCRL_LEFT SCRL_RIGHT>,
-				//<&mouse_scroll SCRL_UP SCRL_DOWN>;
+                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
+                // RE0: ctrl + - / +,,,,
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+ // RE1: volume down/up
+            //<&mouse_scroll SCRL_LEFT SCRL_RIGHT>,
+            //<&mouse_scroll SCRL_UP SCRL_DOWN>;
         };
 
         layer_2 {
             display-name = "NUM / ARROW";
             bindings = <
-                &kp ASTRK        &kp N7     &kp N8     &kp N9     &kp PLUS                        &kp LG(LS(S)) &kp LC(MINUS) &kp LC(EQUAL) &kp C_VOL_DN &kp C_VOL_UP
-                &kp SLASH        &kp N4     &kp N5     &kp N6     &kp MINUS                       &none         &kp LEFT      &kp UP        &kp DOWN     &kp RIGHT
-                &kp N0           &kp N1     &kp N2     &kp N3     &kp DOT   &mkp MB4   &mkp MB5   &none         &kp LG(LEFT)  &kp LG(UP)    &kp LG(DOWN) &kp LG(RIGHT)
-                                        &trans           &trans     &trans     &trans    &trans        &trans  &trans    &trans
+&kp ASTRK  &kp N7  &kp N8  &kp N9  &kp PLUS   &kp LG(LS(S))  &kp LC(MINUS)  &kp LC(EQUAL)  &kp C_VOL_DN  &kp C_VOL_UP
+&kp SLASH  &kp N4  &kp N5  &kp N6  &kp MINUS  &none          &kp LEFT       &kp UP         &kp DOWN      &kp RIGHT
+&kp N0     &kp N1  &kp N2  &kp N3  &kp DOT    &mkp MB4       &mkp MB5       &none          &kp LG(LEFT)  &kp LG(UP)    &kp LG(DOWN)  &kp LG(RIGHT)
+&trans     &trans  &trans  &trans  &trans     &trans         &trans         &trans
             >;
 
             sensor-bindings =
-                <&inc_dec_kp LC(MINUS) LC(EQUAL)>, // RE0: ctrl + - / +,,,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>; // RE1: volume down/up
-
+                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
+                // RE0: ctrl + - / +,,,,
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+ // RE1: volume down/up
         };
 
         layer_3 {
             display-name = "FUNCTION";
             bindings = <
-                &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-                &none   &none   &none   &none   &none                   &none   &none   &none   &none   &none
-                &none   &none   &none   &none   &none   &none   &none   &none   &none   &none    &none  &none
-                                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+&none   &none   &none   &none   &none   &none   &none   &none   &none   &none
+&none   &none   &none   &none   &none   &none   &none   &none   &none   &none    &none  &none
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings =
-                <&inc_dec_kp LC(MINUS) LC(EQUAL)>, // RE0: ctrl + - / +,,,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>; // RE1: volume down/up
-
+                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
+                // RE0: ctrl + - / +,,,,
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+ // RE1: volume down/up
         };
 
         layer_4 {
-			display-name = "SETTING";
-			bindings = <
-				&cust_cfg CCFG_CPI_DN  &cust_cfg CCFG_CPI_UP  &cust_cfg CCFG_ROT_DN   &cust_cfg CCFG_ROT_UP   &cust_cfg CCFG_SCALE_TOG                  &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-				&cust_cfg CCFG_SDIV_DN &cust_cfg CCFG_SDIV_UP &cust_cfg CCFG_SCRH_TOG &cust_cfg CCFG_SCRV_TOG &none                                     &bt BT_CLR     &bt BT_CLR_ALL  &none         &none         &none
-				&cust_cfg CCFG_SAVE    &cust_cfg CCFG_RESET   &none                   &none                   &none                    &none &none      &bootloader    &none           &none         &none         &none
-												                                                 &trans       &trans  &trans  &trans  &trans  &trans    &trans        &trans
-			>;
+            display-name = "SETTING";
+            bindings = <
+&cust_cfg CCFG_CPI_DN   &cust_cfg CCFG_CPI_UP   &cust_cfg CCFG_ROT_DN    &cust_cfg CCFG_ROT_UP    &cust_cfg CCFG_SCALE_TOG  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&cust_cfg CCFG_SDIV_DN  &cust_cfg CCFG_SDIV_UP  &cust_cfg CCFG_SCRH_TOG  &cust_cfg CCFG_SCRV_TOG  &none                     &bt BT_CLR    &bt BT_CLR_ALL  &none         &none         &none
+&cust_cfg CCFG_SAVE     &cust_cfg CCFG_RESET    &none                    &none                    &none                     &none         &none           &bootloader   &none         &none         &none  &none
+&trans                  &trans                  &trans                   &trans                   &trans                    &trans        &trans          &trans
+            >;
 
             sensor-bindings =
-                <&inc_dec_kp LC(MINUS) LC(EQUAL)>, // RE0: ctrl + - / +,,,
-                <&inc_dec_kp C_VOL_DN C_VOL_UP>; // RE1: volume down/up
-
+                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
+                // RE0: ctrl + - / +,,,,
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+ // RE1: volume down/up
         };
     };
 };
