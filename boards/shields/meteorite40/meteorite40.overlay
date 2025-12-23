@@ -21,7 +21,7 @@
     transform = <&transform_225u_space_double>;
 };
 
-#AMLをキープし続けるキー（マウスキー）を登録
+/* #AMLをキープし続けるキー（マウスキー）を登録 */
 &zip_temp_layer {
     excluded-positions = <
         25
