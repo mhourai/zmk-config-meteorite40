@@ -26,6 +26,8 @@
     excluded-positions = <
         25
         26
+        35
+        36
     >;
 };
 
