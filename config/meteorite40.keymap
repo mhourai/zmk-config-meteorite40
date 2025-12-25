@@ -84,7 +84,6 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &exit_AML>;
             label = "KP_exit_AML";
         };
-
     };
 
     combos {
@@ -144,8 +143,6 @@
         };
     };
 
-
-
     keymap {
         compatible = "zmk,keymap";
         layout = &LAYOUT_2U_SPACE;
@@ -153,9 +150,9 @@
         win_default_layer {
             display-name = "BASE";
             bindings = <
-&lt 3 Q           &kp W         &kp E                 &kp R                 &kp T         &kp Y        &kp U        &kp I     &kp O  &kp P
-&mt LSHIFT A      &kp S         &kp D                 &kp F                 &kp G         &kp H        &kp J        &kp K     &kp L  &mt RIGHT_SHIFT MINUS
-&mt LEFT_SHIFT Z  &kp X         &kp C                 &kp V                 &kp B         &lt 6 COLON  &lt 3 SEMI   &kp N     &kp M  &kp COMMA              &kp DOT  &mt RIGHT_SHIFT SLASH
+&lt 3 Q           &kp W         &kp E                 &kp R                     &kp T         &kp Y        &kp U        &kp I     &kp O  &kp P
+&mt LSHIFT A      &kp S         &kp D                 &kp F                     &kp G         &kp H        &kp J        &kp K     &kp L  &mt RIGHT_SHIFT MINUS
+&mt LEFT_SHIFT Z  &kp X         &kp C                 &kp V                     &kp B         &lt 6 COLON  &lt 3 DEL    &kp N     &kp M  &kp COMMA              &kp DOT  &mt RIGHT_SHIFT SLASH
 &kp LWIN          &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &mt LEFT_SHIFT JP_HANZEN  &lt 5 DELETE  &lt 2 ENTER  &lt 1 SPACE  &kp RALT
             >;
 
