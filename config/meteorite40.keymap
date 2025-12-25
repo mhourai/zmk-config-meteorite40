@@ -14,7 +14,7 @@
 
 // #includeのあとのあたりにスクロール量変更の定義を追記
 
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 80
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 40
 
 &mkp_input_listener { input-processors = <&zip_temp_layer 4 10000>; };
 
