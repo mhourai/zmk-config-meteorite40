@@ -23,6 +23,7 @@
 #define JP_UNDERSCORE   LS(0x87)          // _
 #define JP_YEN          0x89              // ¥
 #define JP_PIPE         LS(0x89)          // |
+#define JP_HANZEN       GRAVE             // 半角/全角
 
 &mt {
     flavor = "tap-preferred"; // change hold to tap
@@ -152,7 +153,7 @@
 &lt 3 Q           &kp W         &kp E                 &kp R                 &kp T         &kp Y        &kp U        &kp I     &kp O  &kp P
 &mt LSHIFT A      &kp S         &kp D                 &kp F                 &kp G         &kp H        &kp J        &kp K     &kp L  &mt RIGHT_SHIFT MINUS
 &mt LEFT_SHIFT Z  &kp X         &kp C                 &kp V                 &kp B         &lt 6 COLON  &lt 3 SEMI   &kp N     &kp M  &kp COMMA              &kp DOT  &mt RIGHT_SHIFT SLASH
-&kp LWIN          &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &mt LEFT_SHIFT GRAVE  &lt 5 DELETE  &lt 2 ENTER  &lt 1 SPACE  &kp RALT
+&kp LWIN          &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &mt LEFT_SHIFT JP_HANZEN  &lt 5 DELETE  &lt 2 ENTER  &lt 1 SPACE  &kp RALT
             >;
 
             // RE1: volume down/up
