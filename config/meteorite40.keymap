@@ -100,47 +100,6 @@
             key-positions = <16 17>; /* J + K */
             layers = <0>;
         };
-
-        esc {
-            bindings = <&kp ESCAPE>;
-            key-positions = <20 21>; /* Z + X */
-            layers = <0>;
-        };
-
-        tab {
-            bindings = <&kp TAB>;
-            key-positions = <0 1>; /* Q + W */
-            layers = <0>;
-        };
-
-        home {
-            bindings = <&kp HOME>;
-            key-positions = <16 17>; /* J + K (on layer 2) */
-            layers = <2>;
-        };
-
-        end {
-            bindings = <&kp END>;
-            key-positions = <18 19>; /* L + - (on layer 2) */
-            layers = <2>;
-        };
-
-        ctrl_home {
-            bindings = <&kp LC(HOME)>;
-            key-positions = <16 18>; /* J + L (on layer 2) */
-            layers = <2>;
-        };
-
-        ctrl_end {
-            bindings = <&kp LC(END)>;
-            key-positions = <17 19>; /* K + - (on layer 2) */
-            layers = <2>;
-        };
-
-        scrool {
-            bindings = <&mo 5>;
-            key-positions = <35 36>;
-        };
     };
 
     keymap {
@@ -219,10 +178,10 @@
 
         Shortcut {
             bindings = <
-&trans  &trans  &trans           &trans         &trans         &kp RS(RG(LEFT))  &kp RS(RG(RIGHT))  &trans  &trans  &trans
-&trans  &trans  &trans           &kp LA(RIGHT)  &kp RA(LEFT)   &trans            &trans             &trans  &trans  &trans
-&trans  &trans  &trans           &kp RG(V)      &kp RC(RS(N))  &trans            &trans             &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &kp RA(RC(TAB))  &trans         &trans         &trans            &trans             &trans
+&trans  &trans  &trans           &trans     &trans         &kp RS(RG(LEFT))  &kp RS(RG(RIGHT))  &trans   &trans  &trans
+&trans  &trans  &trans           &mkp MB5   &mkp MB4       &kp HOME          &trans             &trans   &trans  &trans
+&trans  &trans  &trans           &kp RG(V)  &kp RC(RS(N))  &trans            &trans             &kp END  &trans  &trans  &trans  &trans
+&trans  &trans  &kp RA(RC(TAB))  &trans     &trans         &trans            &trans             &trans
             >;
         };
     };
