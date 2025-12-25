@@ -165,6 +165,7 @@
             input-processors = <&sensor_rotation>,
                                <&xy_clipper>,
                                <&scroll_motion_scaler>,
+                                <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
                                <&to_wheel>;
         };
     };
