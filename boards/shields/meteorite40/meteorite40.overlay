@@ -24,8 +24,8 @@
 /* #AMLをキープし続けるキー（マウスキー）を登録 */
 &zip_temp_layer {
     excluded-positions = <
-        35
-        36
+        6
+        7
     >;
 };
 
