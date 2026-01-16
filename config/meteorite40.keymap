@@ -100,11 +100,6 @@
             key-positions = <16 17>; /* J + K */
             layers = <0>;
         };
-
-        test {
-            bindings = <&none>;
-            key-positions = <25 26>;
-        };
     };
 
     keymap {
@@ -114,10 +109,10 @@
         win_default_layer {
             display-name = "BASE";
             bindings = <
-&lt 3 Q           &kp W         &kp E                 &kp R                     &kp T         &lt 5 Y      &kp U        &kp I          &kp O  &kp P
-&mt LSHIFT A      &kp S         &kp D                 &kp F                     &kp G         &kp H        &kp J        &kp K          &kp L  &mt RIGHT_SHIFT MINUS
-&mt LEFT_SHIFT Z  &kp X         &kp C                 &kp V                     &kp B         &lt 6 COLON  &lt 3 DEL    &kp N          &kp M  &kp COMMA              &kp DOT  &mt RIGHT_SHIFT SLASH
-&kp SPACE         &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &mt LEFT_SHIFT JP_HANZEN  &lt 5 DELETE  &lt 2 ENTER  &lt 1 SPACE  &kp RIGHT_GUI
+&lt 3 Q           &kp W         &kp E                 &kp R                     &kp T         &lt 5 Y      &kp U      &kp I          &kp O  &kp P
+&mt LSHIFT A      &kp S         &kp D                 &kp F                     &kp G         &kp H        &kp J      &kp K          &kp L  &mt RIGHT_SHIFT MINUS
+&mt LEFT_SHIFT Z  &kp X         &kp C                 &kp V                     &kp B         &lt 6 COLON  &lt 3 DEL  &kp N          &kp M  &kp COMMA              &kp DOT  &mt RIGHT_SHIFT SLASH
+&kp SPACE         &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &mt LEFT_SHIFT JP_HANZEN  &lt 2 DELETE  &lt 1 ENTER  &kp SPACE  &kp RIGHT_GUI
             >;
 
             // RE1: volume down/up
