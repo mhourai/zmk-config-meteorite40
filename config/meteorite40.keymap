@@ -100,6 +100,11 @@
             key-positions = <16 17>; /* J + K */
             layers = <0>;
         };
+
+        test {
+            bindings = <&none>;
+            key-positions = <25 26>;
+        };
     };
 
     keymap {
@@ -160,10 +165,10 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans    &trans    &none   &none   &trans  &trans  &trans
-&trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans    &trans    &none   &none   &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &mkp MB1  &mkp MB2  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &none     &none     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &mkp MB1  &mkp MB2  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &none   &none   &trans    &trans    &trans
             >;
         };
 
