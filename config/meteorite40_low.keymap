@@ -115,14 +115,6 @@
             >;
         };
 
-        layer_4 {
-			display-name = "SETTING";
-			bindings = <
-				&cust_cfg CCFG_CPI_DN  &cust_cfg CCFG_CPI_UP  &cust_cfg CCFG_ROT_DN   &cust_cfg CCFG_ROT_UP   &cust_cfg CCFG_SCALE_TOG                  &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-				&cust_cfg CCFG_SDIV_DN &cust_cfg CCFG_SDIV_UP &cust_cfg CCFG_SCRH_TOG &cust_cfg CCFG_SCRV_TOG &none                                     &bt BT_CLR     &bt BT_CLR_ALL  &none         &none         &none
-				&cust_cfg CCFG_SAVE    &cust_cfg CCFG_RESET   &none                   &none                   &none                    &none &none      &bootloader    &none           &none         &none         &none
-												                                                 &trans       &trans  &trans  &trans  &trans  &trans    &trans        &trans
-			>;
-        };
+
     };
 };
