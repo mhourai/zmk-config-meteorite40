@@ -126,7 +126,7 @@
 &kp ESCAPE     &kp EXCLAMATION  &kp AT     &kp HASH           &kp DOLLAR            &kp DOUBLE_QUOTES  &kp ENTER  &kp UP    &kp JP_YEN        &kp BACKSPACE
 &kp AMPERSAND  &kp PERCENT      &kp CARET  &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp PLUS           &kp LEFT   &kp DOWN  &kp RIGHT         &kp LEFT_BRACKET
 &kp PLUS       &kp RIGHT_BRACE  &kp PIPE   &kp RIGHT_BRACKET  &kp BACKSLASH         &kp JP_UNDERSCORE  &kp UNDER  &kp SEMI  &kp SINGLE_QUOTE  &kp LESS_THAN     &kp GREATER_THAN  &kp JP_PIPE
-&trans         &trans           &trans     &trans             &trans                &trans             &trans     &trans
+&trans         &trans           &trans     &kp LANG1          &kp LANG2             &trans             &trans     &trans
             >;
 
             // RE1: volume down/up
