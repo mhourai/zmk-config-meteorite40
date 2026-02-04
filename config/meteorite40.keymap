@@ -100,6 +100,11 @@
             key-positions = <16 17>; /* J + K */
             layers = <0>;
         };
+
+        MB3 {
+            bindings = <&mkp MB3>;
+            key-positions = <35 36>;
+        };
     };
 
     keymap {
