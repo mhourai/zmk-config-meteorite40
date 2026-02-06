@@ -102,6 +102,7 @@
         MB3 {
             bindings = <&mkp MB3>;
             key-positions = <35 36>;
+            layers = <0>;
         };
     };
 
