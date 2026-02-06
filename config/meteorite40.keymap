@@ -7,6 +7,14 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 200
 #include <dt-bindings/zmk/pointing.h>
 
+
+// OS設定を日本語キーボードのまま使用するための変換定義
+#define JP_UNDERSCORE   LS(0x87)          // _
+#define JP_YEN          0x89              // ¥
+#define JP_PIPE         LS(0x89)          // |
+#define JP_HANZEN       GRAVE             // 半角/全角
+
+
 &mt { 
     flavor = "tap-preferred"; // change hold to tap
     tapping-term-ms = <200>;
@@ -88,10 +96,10 @@
         win_default_layer {
             display-name = "BASE";
             bindings = <
-                &kp Q        &kp W       &kp E        &kp R        &kp T                                 &kp Y        &kp U       &kp I       &kp O  &kp P
-                &mt LSHIFT A &kp S       &kp D        &kp F        &kp G                                 &kp H        &kp J       &kp K       &kp L  &kp MINUS
-                &kp Z        &kp X       &kp C        &kp V        &kp B        &mkp MB1     &mkp MB2    &kp N        &kp M       &kp COMMA   &kp DOT  &lt 4 SLASH
-                                    &kp LWIN  &mt LCTRL TAB  &mt LSHIFT SPACE  &lt 1 SPACE  &lt 2 ENTER  &lt 2 ENTER  &lt 3 BSPC  &kp RALT
+&kp Q             &kp W         &kp E                 &kp R     &mt SPACE T  &lt 5 Y      &kp U        &kp I          &kp O  &kp P
+&mt LSHIFT A      &kp S         &kp D                 &kp F     &kp G        &kp H        &kp J        &kp K          &kp L  &mt RIGHT_SHIFT MINUS
+&mt LEFT_SHIFT Z  &kp X         &kp C                 &kp V     &kp B        &lt 6 COLON  &lt 3 DEL    &kp N          &kp M  &kp COMMA              &kp DOT  &mt RIGHT_SHIFT SLASH
+&kp SPACE         &kp LEFT_ALT  &mt LEFT_CONTROL TAB  &mkp MB1  &mkp MB2     &lt 1 SPACE  &lt 2 ENTER  &kp RIGHT_GUI
             >;
 
             sensor-bindings =
@@ -105,10 +113,10 @@
         layer_1 {
             display-name = "SYMBOLS";
             bindings = <
-                &kp EXCL   &kp AT    &kp HASH  &kp DLLR  &kp PRCNT                       &none      &kp LPAR   &kp RPAR   &kp LBKT   &kp RBKT
-                &kp CARET  &kp AMPS  &kp STAR  &kp BSLH  &kp PIPE                        &kp SEMI   &kp COLON  &kp SQT    &kp DQT    &kp EQUAL
-                &none      &none     &none     &none     &none      &mkp MB4  &mkp MB5   &kp GRAVE  &kp TILDE  &kp LBRC   &kp RBRC   &kp PLUS
-                                     &trans     &trans    &trans    &trans    &trans     &trans    &kp DEL     &trans
+&kp ESCAPE     &kp EXCLAMATION  &kp AT     &kp HASH           &kp DOLLAR            &kp DOUBLE_QUOTES  &kp ENTER  &kp UP    &kp JP_YEN        &kp BACKSPACE
+&kp AMPERSAND  &kp PERCENT      &kp CARET  &kp ASTERISK       &kp LEFT_PARENTHESIS  &kp PLUS           &kp LEFT   &kp DOWN  &kp RIGHT         &kp LEFT_BRACKET
+&kp PLUS       &kp RIGHT_BRACE  &kp PIPE   &kp RIGHT_BRACKET  &kp BACKSLASH         &kp JP_UNDERSCORE  &kp UNDER  &kp SEMI  &kp SINGLE_QUOTE  &kp LESS_THAN     &kp GREATER_THAN  &kp JP_PIPE
+&trans         &trans           &trans     &kp LANG1          &kp LANG2             &trans             &trans     &trans
             >;
 
             sensor-bindings =
@@ -121,10 +129,10 @@
         layer_2 {
             display-name = "NUM / ARROW";
             bindings = <
-                &kp ASTRK        &kp N7     &kp N8     &kp N9     &kp PLUS                        &kp LG(LS(S)) &kp LC(MINUS) &kp LC(EQUAL) &kp C_VOL_DN &kp C_VOL_UP
-                &kp SLASH        &kp N4     &kp N5     &kp N6     &kp MINUS                       &none         &kp LEFT      &kp UP        &kp DOWN     &kp RIGHT
-                &kp N0           &kp N1     &kp N2     &kp N3     &kp DOT   &mkp MB4   &mkp MB5   &none         &kp LG(LEFT)  &kp LG(UP)    &kp LG(DOWN) &kp LG(RIGHT)
-                                        &trans           &trans     &trans     &trans    &trans        &trans  &trans    &trans
+&kp ESC         &kp F1  &kp F2   &kp F3   &kp F4   &kp KP_PLUS      &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp BACKSPACE
+&kp PSCRN       &kp F5  &kp F6   &kp F7   &kp F8   &kp KP_MULTIPLY  &kp KP_N4        &kp KP_N5        &kp KP_N6        &kp MINUS
+&kp KP_NUMLOCK  &kp F9  &kp F10  &kp F11  &kp F12  &kp EQUAL        &kp SLASH        &kp KP_DOT       &kp KP_N1        &kp KP_N2      &kp KP_N3  &kp KP_N0
+&trans          &trans  &trans   &trans   &trans   &trans           &trans           &trans
             >;
 
             sensor-bindings =
@@ -134,12 +142,12 @@
         };
 
         layer_3 {
-            display-name = "FUNCTION";
+            display-name = "CONFIG";
             bindings = <
-                &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
-                &none   &none   &none   &none   &none                   &none   &none   &none   &none   &none
-                &none   &none   &none   &none   &none   &none   &none   &none   &none   &none    &none  &none
-                                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3   &bt BT_SEL 4
+&trans  &trans  &trans  &trans  &none   &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2   &bt BT_DISC 3  &bt BT_DISC 4
+&trans  &trans  &none   &none   &none   &none          &none          &bt BT_CLR_ALL  &none          &none          &none  &bootloader
+&trans  &trans  &trans  &trans  &trans  &trans         &trans         &trans
             >;
 
             sensor-bindings =
@@ -162,5 +170,28 @@
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>; // RE1: volume down/up
 
         };
+
+
+        SCROOL {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        Shortcut {
+            bindings = <
+&trans  &trans  &trans           &trans     &trans         &kp RS(RG(LEFT))  &kp RS(RG(RIGHT))  &trans   &trans  &trans
+&trans  &trans  &trans           &mkp MB5   &mkp MB4       &kp HOME          &trans             &trans   &trans  &trans
+&trans  &trans  &trans           &kp RG(V)  &kp RC(RS(N))  &trans            &trans             &kp END  &trans  &trans  &trans  &trans
+&trans  &trans  &kp RA(RC(TAB))  &trans     &trans         &trans            &trans             &trans
+            >;
+        };
+
+
+
+
     };
 };
