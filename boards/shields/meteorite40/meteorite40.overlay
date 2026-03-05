@@ -1,4 +1,5 @@
 #include "../common/meteorite40.dtsi"
+#include "../common/meteorite40-usb.overlay"
 #include "meteorite40-layout.dtsi"
 
 &LAYOUT_SPLIT_SPACE {

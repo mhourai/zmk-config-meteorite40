@@ -4,7 +4,13 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #include <behaviors/custom_config.dtsi>
+#include <behaviors/meteorite_custom_key.dtsi>
+#include <behaviors/meteorite_bt_os.dtsi>
+#include <behaviors/meteorite_mod_key.dtsi>
+#include <behaviors/meteorite_os_key.dtsi>
 #include <dt-bindings/zmk/custom_config.h>
+#include <dt-bindings/zmk/meteorite_custom_keys.h>
+#include <dt-bindings/zmk/meteorite_bt_os.h>
 
 &mt { 
     flavor = "tap-preferred"; // change hold to tap
@@ -18,7 +24,36 @@
     quick-tap-ms = <150>; // change 200 to 150
 };
 
-/ { 
+/ {
+    behaviors {
+        mck_mt: mck_mt {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+            bindings = <&mck>, <&kp>;
+            display-name = "meteorite OS-Switch-mod-tap";
+        };
+
+        mck_mt_st: mck_mt_st {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+            bindings = <&mck>, <&alt_cmd_tab>;
+            display-name = "meteorite OS-Switch-mod-tap (smart toggle)";
+        };
+
+        alt_cmd_tab: alt_cmd_tab {
+            compatible = "zmk,behavior-smart-toggle";
+            #binding-cells = <0>;
+            display-name = "meteorite Smart toggle (Alt/Cmd+Tab)";
+            bindings = <&mck M_OS_ALT_CMD>, <&kp TAB>;
+            position-bindings = <12 13>; /* D, F */
+            position-binding-behaviors = <&kp LS(TAB)>, <&kp TAB>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
 
@@ -46,26 +81,26 @@
             layers = <0>;
         };
 
-        home {
-            bindings = <&kp HOME>;
+        line_home {
+            bindings = <&mosk HOME LG(LEFT)>;
             key-positions = <16 17>; /* J + K (on layer 2) */
             layers = <2>;
         };
 
-        end {
-            bindings = <&kp END>;
+        line_end {
+            bindings = <&mosk END LG(RIGHT)>;
             key-positions = <18 19>; /* L + - (on layer 2) */
             layers = <2>;
         };
 
-        ctrl_home {
-            bindings = <&kp LC(HOME)>;
+        doc_home {
+            bindings = <&mosk LC(HOME) LG(UP)>;
             key-positions = <16 18>; /* J + L (on layer 2) */
             layers = <2>;
         };
 
-        ctrl_end {
-            bindings = <&kp LC(END)>;
+        doc_end {
+            bindings = <&mosk LC(END) LG(DOWN)>;
             key-positions = <17 19>; /* K + - (on layer 2) */
             layers = <2>;
         };
@@ -98,9 +133,9 @@
         layer_2 {
             display-name = "NUM / ARROW";
             bindings = <
-                &kp ASTRK        &kp N7     &kp N8     &kp N9     &kp PLUS                        &kp LG(LS(S)) &kp LC(MINUS) &kp LC(EQUAL) &kp C_VOL_DN &kp C_VOL_UP
-                &kp SLASH        &kp N4     &kp N5     &kp N6     &kp MINUS                       &none         &kp LEFT      &kp UP        &kp DOWN     &kp RIGHT
-                &kp N0           &kp N1     &kp N2     &kp N3     &kp DOT   &mkp MB4   &mkp MB5   &none         &kp LG(LEFT)  &kp LG(UP)    &kp LG(DOWN) &kp LG(RIGHT)
+                &kp ASTRK        &kp N7     &kp N8     &kp N9     &kp PLUS                        &none  &none     &none   &kp C_VOL_DN &kp C_VOL_UP
+                &kp SLASH        &kp N4     &kp N5     &kp N6     &kp MINUS                       &none  &kp LEFT  &kp UP  &kp DOWN     &kp RIGHT
+                &kp N0           &kp N1     &kp N2     &kp N3     &kp DOT   &mkp MB4   &mkp MB5   &none  &none     &none   &none        &none
                                         &trans           &trans     &trans     &trans    &trans        &trans  &trans    &trans
             >;
         };
@@ -118,10 +153,10 @@
         layer_4 {
 			display-name = "SETTING";
 			bindings = <
-				&ccfg C_CPI_DN  &ccfg C_CPI_UP  &ccfg C_ROT_DN   &ccfg C_ROT_UP   &ccfg C_SCALE_TOG                  &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-				&ccfg C_SDIV_DN &ccfg C_SDIV_UP &ccfg C_SCRH_TOG &ccfg C_SCRV_TOG &none                              &bt BT_CLR     &bt BT_CLR_ALL  &none         &none         &none
-				&ccfg C_SAVE    &ccfg C_RESET   &none            &none            &none              &none &none     &bootloader    &none           &none         &none         &none
-												                                                 &trans       &trans  &trans  &trans  &trans  &trans    &trans        &trans
+				&ccfg C_CPI_DN  &ccfg C_CPI_UP  &ccfg C_ROT_DN   &ccfg C_ROT_UP   &ccfg C_SCALE_TOG                        &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+				&ccfg C_SDIV_DN &ccfg C_SDIV_UP &ccfg C_SCRH_TOG &ccfg C_SCRV_TOG &ccfg C_SCRL_SCALE_TOG                   &bt BT_CLR     &bt BT_CLR_ALL  &none         &none         &none
+				&ccfg C_SAVE    &ccfg C_RESET   &none            &none            &ccfg C_SCRL2_UP         &none  &none    &bootloader    &none           &none         &none         &none
+												                    &trans       &trans  &trans  &trans  &trans  &trans    &trans        &trans
 			>;
         };
     };

@@ -3,16 +3,18 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include <input/processors.dtsi>
 
-#define DEFAULT_CPI 1000        // トラックボールの感度
-#define ROTATION_ANGLE 0        // トラックボールのY軸を回転
+#define DEFAULT_CPI 800         // トラックボールの感度
+#define ROTATION_ANGLE 20       // トラックボールのY軸を回転
 #define CLIPPER_THRESHOLD 20    // スクロール時に斜めの値をクリップ
 
-#define SCROLL_LAYER_1 2          // スクロールを有効にするレイヤー1
-#define SCROLL_LAYER_2 5          // スクロールを有効にするレイヤー2
+#define SCROLL_LAYER_1 2        // スクロールを有効にするレイヤー1（固定）
+#define SCROLL_LAYER_2 3        // スクロールを有効にするレイヤー2
 #define INVERT_X 1              // X軸のスクロールの反転
 #define INVERT_Y 0              // Y軸のスクロールの反転
 
-#define SCALING_MODE 0          // 0: 無効, 1: 有効
+#define SCALING_MODE 1          // 0: 無効, 1: 有効
+#define SCROLL_SCALING_MODE 1   // 0: 無効, 1: 有効
+#define OS_MODE_DEFAULT 0       // 0: Win, 1: Mac
 #define MAX_OUTPUT 300          // 出力の最大絶対値 |y|。既定 127
 #define HALF_INPUT 50           // r=|x|/xs の xs（counts）。既定 50
 #define EXPONENT_TENTHS 12      // 指数 p を 0.1 分解能で指定（p*10、例: 15 は p=1.5）。既定 10（p=1.0）
@@ -121,6 +123,7 @@
     motion_scaler: motion_scaler {
         compatible = "zmk,input-processor-motion-scaler";
         #input-processor-cells = <0>;
+        custom-config-scaling = <0>;
         scaling-mode = <SCALING_MODE>;
         max-output = <MAX_OUTPUT>;
         half-input = <HALF_INPUT>;
@@ -131,7 +134,8 @@
     scroll_motion_scaler: motion_scaler_scroll {
         compatible = "zmk,input-processor-motion-scaler";
         #input-processor-cells = <0>;
-        scaling-mode = <SCALING_MODE>;
+        custom-config-scaling = <1>;
+        scaling-mode = <SCROLL_SCALING_MODE>;
         max-output = <SCROLL_MAX_OUTPUT>;
         half-input = <SCROLL_HALF_INPUT>;
         exponent-tenths = <SCROLL_EXPONENT_TENTHS>;
@@ -152,19 +156,34 @@
         invert-y = <INVERT_Y>;
     };
 
+#if CONFIG_ZMK_CUSTOM_CONFIG
+    scroll_layer_defaults: scroll_layer_defaults {
+        compatible = "zmk,custom-scroll-layers";
+        layers = <SCROLL_LAYER_1 SCROLL_LAYER_2>;
+    };
+
+    custom_config_defaults: custom_config_defaults {
+        compatible = "zmk,custom-config-defaults";
+        os-mode = <OS_MODE_DEFAULT>;
+    };
+#endif
+
+    scroll_layer_gate: scroll_layer_gate {
+        compatible = "zmk,input-processor-scroll-layer";
+        #input-processor-cells = <0>;
+        layer-1 = <SCROLL_LAYER_1>;
+        layer-2 = <SCROLL_LAYER_2>;
+        input-processors = <&xy_clipper>,
+                           <&scroll_motion_scaler>,
+                           <&to_wheel>;
+    };
+
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
         input-processors = <&sensor_rotation>,
+                           <&scroll_layer_gate>,
                            <&motion_scaler>;
-
-        scroll {
-            layers = <SCROLL_LAYER_1 SCROLL_LAYER_2>;
-            input-processors = <&sensor_rotation>,
-                               <&xy_clipper>,
-                               <&scroll_motion_scaler>,
-                               <&to_wheel>;
-        };
     };
 };
