@@ -12,7 +12,7 @@
 #define INVERT_X 1              // X軸のスクロールの反転
 #define INVERT_Y 0              // Y軸のスクロールの反転
 
-#define SCALING_MODE 1          // 0: 無効, 1: 有効
+#define SCALING_MODE 0          // 0: 無効, 1: 有効（カーソル加速。0=等倍で素通し）
 #define SCROLL_SCALING_MODE 1   // 0: 無効, 1: 有効
 #define OS_MODE_DEFAULT 0       // 0: Win, 1: Mac
 #define MAX_OUTPUT 300          // 出力の最大絶対値 |y|。既定 127
