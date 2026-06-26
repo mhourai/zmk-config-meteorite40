@@ -6,19 +6,10 @@ manifest:
       url-base: https://github.com/iwk7273
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: iwk7273
+      revision: feat/meteorite-custom-config-rpc
       import: app/west.yml
     - name: zmk-pmw3610-driver
-      remote: iwk7273
-      revision: main
-    - name: zmk-feature-sensor_rotation
-      remote: iwk7273
-      revision: main
-    - name: zmk-feature-xy_clipper
-      remote: iwk7273
-      revision: main
-    - name: zmk-feature-scaling
       remote: iwk7273
       revision: main
     - name: zmk-feature-meteorite-config
