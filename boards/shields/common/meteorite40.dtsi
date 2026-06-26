@@ -7,8 +7,8 @@
 #define ROTATION_ANGLE 20       // トラックボールのY軸を回転
 #define CLIPPER_THRESHOLD 20    // スクロール時に斜めの値をクリップ
 
-#define SCROLL_LAYER_1 2        // スクロールを有効にするレイヤー1（固定）
-#define SCROLL_LAYER_2 3        // スクロールを有効にするレイヤー2
+#define SCROLL_LAYER_1 5        // スクロールを有効にするレイヤー（レイヤー5のみ）
+#define SCROLL_LAYER_2 5        // スクロールを有効にするレイヤー（レイヤー5に統一）
 #define INVERT_X 1              // X軸のスクロールの反転
 #define INVERT_Y 0              // Y軸のスクロールの反転
 

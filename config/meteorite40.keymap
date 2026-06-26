@@ -195,7 +195,7 @@
             // RE1: volume down/up
         };
 
-        layer_5 {
+        layer_4 {
             bindings = <
 &kp ESC           &kp RA(RIGHT)       &trans       &kp RS(RG(LEFT))  &kp RC(T)      &kp SLASH  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp BSPC
 &trans            &kp RA(LEFT_ARROW)  &trans       &kp RS(RC(SEMI))  &kp F2         &kp PLUS   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp MINUS
@@ -207,6 +207,7 @@
         };
 
         layer_5 {
+            display-name = "SCROLL";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
