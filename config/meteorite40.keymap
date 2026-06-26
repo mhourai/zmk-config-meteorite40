@@ -126,17 +126,18 @@
         win_default_layer {
             display-name = "BASE";
             bindings = <
-&kp Q         &kp W          &kp E             &kp R        &kp T        &kp Y        &kp U       &kp I     &kp O  &kp P
-&mt LSHIFT A  &kp S          &lt 5 D           &kp F        &kp G        &kp H        &kp J       &kp K     &kp L  &kp MINUS
-&kp Z         &kp X          &kp C             &kp V        &kp B        &mkp MB1     &mkp MB2    &kp N     &kp M  &kp COMMA  &kp DOT  &lt 4 SLASH
-&kp LWIN      &mt LCTRL TAB  &mt LSHIFT SPACE  &lt 1 SPACE  &lt 1 ENTER  &lt 2 ENTER  &lt 3 BSPC  &kp RALT
+&kp Q             &kp W             &kp E            &kp R     &kp T     &kp Y        &kp U       &kp I     &kp O  &kp P
+&mt LSHIFT A      &kp S             &lt 5 D          &kp F     &kp G     &kp H        &kp J       &kp K     &kp L  &kp MINUS
+&mt LEFT_SHIFT Z  &kp X             &kp C            &kp V     &kp B     &mkp MB1     &mkp MB2    &kp N     &kp M  &kp COMMA  &kp DOT  &lt 4 SLASH
+&kp LWIN          &mt LEFT_ALT TAB  &mt RCTRL GRAVE  &mkp MB1  &mkp MB2  &lt 2 ENTER  &lt 3 BSPC  &kp RALT
             >;
 
             sensor-bindings =
                 <&mouse_scroll_var SCRL_RIGHT SCRL_LEFT>,
-                // RE0(左): 時計回/右スクロール、反時計回/左スクロール,
+                // RE0(左): 時計回/右スクロール、反時計回/左スクロール,,
                 <&mouse_scroll_var SCRL_UP SCRL_DOWN>;
-    // RE1(右): 時計回/上スクロール、反時計回/下スクロール
+
+            // RE1(右): 時計回/上スクロール、反時計回/下スクロール
             //<&inc_dec_kp LC(MINUS) LC(EQUAL)>, // RE0: ctrl + - / +,,,
             //<&inc_dec_kp C_VOL_DN C_VOL_UP>; // RE1: volume down/up
         };
@@ -144,17 +145,18 @@
         layer_1 {
             display-name = "SYMBOLS";
             bindings = <
-&kp ESCAPE  &kp EXCL  &kp AT    &kp HASH   &kp DOLLAR            &none     &kp LPAR   &kp RPAR   &kp LBKT   &kp RBKT
-&kp CARET   &kp AMPS  &kp STAR  &kp ASTRK  &kp LEFT_PARENTHESIS  &kp SEMI  &kp COLON  &kp SQT    &kp DQT    &kp EQUAL
-&none       &none     &none     &none      &none                 &mkp MB4  &mkp MB5   &kp GRAVE  &kp TILDE  &kp LBRC   &kp RBRC  &kp PLUS
-&trans      &trans    &trans    &trans     &trans                &trans    &kp DEL    &trans
+&kp ESCAPE     &kp EXCL     &kp AT     &kp HASH   &kp DOLLAR            &kp DOUBLE_QUOTES  &kp PLUS        &kp UP_ARROW    &kp BACKSLASH  &kp BSPC
+&kp AMPERSAND  &kp PERCENT  &kp CARET  &kp ASTRK  &kp LEFT_PARENTHESIS  &kp EQUAL          &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT      &kp LBKT
+&kp GRAVE      &kp GRAVE    &kp GRAVE  &kp RBKT   &kp BSLH              &kp UNDER          &mkp MB5        &kp SEMI        &kp APOS       &kp LESS_THAN  &kp GREATER_THAN  &kp PLUS
+&trans         &trans       &trans     &trans     &trans                &trans             &kp DEL         &trans
             >;
 
             sensor-bindings =
                 <&mouse_scroll_var SCRL_UP SCRL_DOWN>,
-                // RE1(右): 時計回/上スクロール、反時計回/下スクロール,
+                // RE1(右): 時計回/上スクロール、反時計回/下スクロール,,
                 <&mouse_scroll_var SCRL_RIGHT SCRL_LEFT>;
- // RE0(左): 時計回/右スクロール、反時計回/左スクロール
+
+            // RE0(左): 時計回/右スクロール、反時計回/左スクロール
             //<&inc_dec_kp LC(MINUS) LC(EQUAL)>, // RE0: ctrl + - / +,,,
             //<&inc_dec_kp C_VOL_DN C_VOL_UP>; // RE1: volume down/up
         };
@@ -170,9 +172,10 @@
 
             sensor-bindings =
                 <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,
+                // RE0: ctrl + - / +,,,,,
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
- // RE1: volume down/up
+
+            // RE1: volume down/up
         };
 
         layer_3 {
@@ -186,9 +189,10 @@
 
             sensor-bindings =
                 <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,
+                // RE0: ctrl + - / +,,,,,
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
- // RE1: volume down/up
+
+            // RE1: volume down/up
         };
 
         layer_4 {
@@ -202,9 +206,10 @@
 
             sensor-bindings =
                 <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,
+                // RE0: ctrl + - / +,,,,,
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
- // RE1: volume down/up
+
+            // RE1: volume down/up
         };
 
         layer_5 {
