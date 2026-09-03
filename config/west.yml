@@ -7,19 +7,19 @@ manifest:
     - name: prospector
       url-base: https://github.com/t-ogura
   projects:
-    # 既知の正常な組み合わせ（run 109〜119 で緑）に固定してドリフトを防止。
-    # 2026-08-25 に上流 zmk フォーク / meteorite-config が motion-scaler を
-    # リファクタ（custom-config-scaling 廃止, pointer-profile 等へ移行）したため main 追従では非互換。
     - name: zmk
       remote: iwk7273
-      revision: d11c6b288c2e9a2ac561ba3ba2c04d0e50e3a0e1  # feat/meteorite-custom-config-rpc @ 2026-06-18
+      revision: feat/meteorite-custom-config-rpc
       import: app/west.yml
     - name: zmk-pmw3610-driver
       remote: iwk7273
-      revision: 8af03264f272dd709f50cca8b80c835294e1f320  # main @ 2026-02-21
+      revision: main
+    # meteorite-config のみ 2026-06-11 の commit に固定（旧 motion-scaler binding）。
+    # 2026-08-25 の上流リファクタ（custom-config-scaling 廃止 → pointer-profile 等）で
+    # main 追従だと dtsi が非互換になり CI が壊れるため、既知の正常版に固定してドリフトを防止。
     - name: zmk-feature-meteorite-config
       remote: iwk7273
-      revision: b15531e6791a1ad749ef88e42960e78c5582898e  # main @ 2026-06-11（旧 binding）
+      revision: b15531e6791a1ad749ef88e42960e78c5582898e
     - name: prospector-zmk-module
       remote: prospector
       revision: v2.1.0
