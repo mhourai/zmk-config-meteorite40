@@ -1,16 +1,13 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/zmk/input_transform.h>
-#include <dt-bindings/zmk/keys.h>
-/*
- * keys.h pulls in modifiers.h, whose RC(keycode) (right-control) macro shadows
- * matrix_transform.h's RC(row, col) used by the shield keymap transforms.
- * Restore the transform macro here; the ball router bindings below use only
- * LC/LG/LA, never RC.
- */
-#undef RC
-#define RC(row, col) (((row) << 8) + (col))
 #include <input/processors.dtsi>
+/*
+ * NOTE: keys.h はここでは include しない。keys.h(modifiers.h) が定義する
+ * RC(keycode)（右Ctrl修飾, 1引数）が matrix_transform.h の RC(row,col)（2引数）
+ * を潰し、同一プリプロセスで後続する keymap の RC() 修飾（layer_4 の RC(T) 等）と
+ * 衝突するため。ball_profile_router のジェスチャ binding は keys.h を使わず
+ * &none（未使用: OFF/SCROLL プロファイルのみ運用）にしてある。
 
 #define DEFAULT_CPI 600         // トラックボールの感度
 #define ROTATION_ANGLE 20       // トラックボールのY軸を回転
@@ -145,38 +142,18 @@
         idle-sleep-timeout-s = <900>;
     };
 
-    behaviors {
-        /* Ball Profile 専用の OS キー（keymap の &mosk とは別インスタンスにして
-         * pressed 状態を共有しない）。param 0 はそのOSで no-op。 */
-        ball_mosk: ball_mosk {
-            compatible = "zmk,behavior-meteorite-os-key";
-            #binding-cells = <2>;
-            display-name = "Ball OS-Switch Key";
-        };
-    };
-
     ball_profile_router: ball_profile_router {
         compatible = "zmk,input-processor-meteorite-ball-profile";
         #input-processor-cells = <0>;
-        /* raw motionへgainを適用してからstep化するScroll Scaling v2 */
+        /* SCROLL プロファイル時に適用するサブチェーン（scroll transform）。 */
         input-processors = <&scroll_transform>;
-        /* 固定 Profile の 12 binding（profile-major / 方向 LEFT,RIGHT,UP,DOWN）。 */
+        /* 固定 Profile の 12 binding（profile-major / 方向 LEFT,RIGHT,UP,DOWN）。
+         * BROWSER/DESKTOP/WINDOW ジェスチャは未使用（layer-profiles は OFF/SCROLL のみ）
+         * のため &none。使いたくなったら keys.h 衝突を避けた形で差し替える。 */
         bindings =
-            /* BROWSER */
-            <&ball_mosk LC(PG_UP) LG(LA(LEFT))>,
-            <&ball_mosk LC(PG_DN) LG(LA(RIGHT))>,
-            <&ball_mosk LC(EQUAL) LG(EQUAL)>,
-            <&ball_mosk LC(MINUS) LG(MINUS)>,
-            /* DESKTOP */
-            <&ball_mosk LC(LG(LEFT)) LC(LEFT)>,
-            <&ball_mosk LC(LG(RIGHT)) LC(RIGHT)>,
-            <&ball_mosk LG(TAB) LC(UP)>,
-            <&ball_mosk LG(D) F11>,
-            /* WINDOW */
-            <&ball_mosk LG(LEFT) LC(LA(LEFT))>,
-            <&ball_mosk LG(RIGHT) LC(LA(RIGHT))>,
-            <&ball_mosk LG(UP) LC(LA(UP))>,
-            <&ball_mosk LG(DOWN) LC(LA(DOWN))>;
+            <&none>, <&none>, <&none>, <&none>,
+            <&none>, <&none>, <&none>, <&none>,
+            <&none>, <&none>, <&none>, <&none>;
     };
 
     trackball_listener {
