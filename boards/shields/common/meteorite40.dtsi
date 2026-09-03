@@ -8,6 +8,7 @@
  * を潰し、同一プリプロセスで後続する keymap の RC() 修飾（layer_4 の RC(T) 等）と
  * 衝突するため。ball_profile_router のジェスチャ binding は keys.h を使わず
  * &none（未使用: OFF/SCROLL プロファイルのみ運用）にしてある。
+ */
 
 #define DEFAULT_CPI 600         // トラックボールの感度
 #define ROTATION_ANGLE 20       // トラックボールのY軸を回転
