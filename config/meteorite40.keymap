@@ -126,15 +126,15 @@
         win_default_layer {
             display-name = "BASE";
             bindings = <
-&kp Q               &kp W               &kp E          &kp R     &kp T     &lt 5 Y      &kp U         &kp I     &kp O  &kp P
-&mt LSHIFT A        &kp S               &lt 4 D        &kp F     &kp G     &kp H        &kp J         &kp K     &kp L  &mt LEFT_SHIFT MINUS
-&mt LEFT_SHIFT Z    &kp X               &kp C          &kp V     &kp B     &kp COLON    &lt 3 DELETE  &kp N     &kp M  &kp COMMA             &kp DOT  &mt LEFT_SHIFT SLASH
-&mt SPACE LEFT_GUI  &mt LEFT_ALT GRAVE  &mt RCTRL TAB  &mkp MB1  &mkp MB2  &lt 1 ENTER  &lt 2 SPACE   &kp RALT
+&kp Q               &kp W               &kp E          &kp R     &kp T     &lt 5 Y      &kp U         &kp I       &kp O  &kp P
+&mt LSHIFT A        &kp S               &lt 4 D        &kp F     &kp G     &kp H        &kp J         &kp K       &kp L  &mt LEFT_SHIFT MINUS
+&mt LEFT_SHIFT Z    &kp X               &kp C          &kp V     &kp B     &kp COLON    &lt 3 DELETE  &kp N       &kp M  &kp COMMA             &kp DOT  &mt LEFT_SHIFT SLASH
+&mt SPACE LEFT_GUI  &mt LEFT_ALT GRAVE  &mt RCTRL TAB  &mkp MB1  &mkp MB2  &lt 1 SPACE  &lt 2 ENTER   &kp DELETE
             >;
 
             sensor-bindings =
                 <&mouse_scroll_var SCRL_RIGHT SCRL_LEFT>,
-                // RE0(左): 時計回/右スクロール、反時計回/左スクロール,,,,,,,,,
+                // RE0(左): 時計回/右スクロール、反時計回/左スクロール,,,,,,,,,,
                 <&mouse_scroll_var SCRL_UP SCRL_DOWN>;
 
             // RE1(右): 時計回/上スクロール、反時計回/下スクロール
@@ -145,7 +145,7 @@
         layer_1 {
             display-name = "SYMBOLS";
             bindings = <
-&kp ESCAPE     &kp EXCL     &kp AT     &kp HASH   &kp DOLLAR            &kp DOUBLE_QUOTES  &kp PLUS        &kp UP_ARROW    &kp BACKSLASH  &kp BSPC
+&kp ESCAPE     &kp EXCL     &kp AT     &kp HASH   &kp DOLLAR            &kp DOUBLE_QUOTES  &kp ENTER       &kp UP_ARROW    &kp BACKSLASH  &kp BSPC
 &kp AMPERSAND  &kp PERCENT  &kp CARET  &kp ASTRK  &kp LEFT_PARENTHESIS  &kp EQUAL          &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT      &kp LBKT
 &kp GRAVE      &kp GRAVE    &kp GRAVE  &kp RBKT   &kp BSLH              &kp UNDER          &mkp MB5        &kp SEMI        &kp APOS       &kp LESS_THAN  &kp GREATER_THAN  &kp PLUS
 &trans         &trans       &trans     &trans     &trans                &trans             &kp DEL         &trans
@@ -153,7 +153,7 @@
 
             sensor-bindings =
                 <&mouse_scroll_var SCRL_UP SCRL_DOWN>,
-                // RE1(右): 時計回/上スクロール、反時計回/下スクロール,,,,,,,,,
+                // RE1(右): 時計回/上スクロール、反時計回/下スクロール,,,,,,,,,,
                 <&mouse_scroll_var SCRL_RIGHT SCRL_LEFT>;
 
             // RE0(左): 時計回/右スクロール、反時計回/左スクロール
@@ -164,15 +164,15 @@
         layer_2 {
             display-name = "NUM / ARROW";
             bindings = <
-&kp ASTRK  &kp N7  &kp N8  &kp N9  &kp PLUS   &kp LG(LS(S))  &kp LC(MINUS)  &kp LC(EQUAL)  &kp C_VOL_DN  &kp C_VOL_UP
-&kp SLASH  &kp N4  &kp N5  &kp N6  &kp MINUS  &none          &kp LEFT       &kp UP         &kp DOWN      &kp RIGHT
-&kp N0     &kp N1  &kp N2  &kp N3  &kp DOT    &mkp MB4       &mkp MB5       &none          &kp LG(LEFT)  &kp LG(UP)    &kp LG(DOWN)  &kp LG(RIGHT)
-&trans     &trans  &trans  &trans  &trans     &trans         &trans         &trans
+&kp ASTRK  &kp N7  &kp N8  &kp N9  &kp PLUS   &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+&kp SLASH  &kp N4  &kp N5  &kp N6  &kp MINUS  &none      &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+&kp N0     &kp N1  &kp N2  &kp N3  &kp DOT    &mkp MB4   &mkp MB5   &none      &kp SPACE  &kp SPACE  &kp SPACE  &kp SPACE
+&trans     &trans  &trans  &trans  &trans     &trans     &trans     &trans
             >;
 
             sensor-bindings =
                 <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,,,,,,,,,
+                // RE0: ctrl + - / +,,,,,,,,,,,,,
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // RE1: volume down/up
@@ -189,7 +189,7 @@
 
             sensor-bindings =
                 <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,,,,,,,,,
+                // RE0: ctrl + - / +,,,,,,,,,,,,,
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // RE1: volume down/up
