@@ -7,19 +7,19 @@ manifest:
     - name: prospector
       url-base: https://github.com/t-ogura
   projects:
+    # 上流の新トラックボール方式（ball-profile / scroll_transform）に一致する
+    # 2026-08-25 の commit にピン留めしてドリフトを防止（zmk フォークと
+    # meteorite-config は密結合のため必ず同世代で揃える）。
     - name: zmk
       remote: iwk7273
-      revision: feat/meteorite-custom-config-rpc
+      revision: 3dfcd49add849e466f87b482464e9f28403b2c82  # feat/meteorite-custom-config-rpc @ 2026-08-25
       import: app/west.yml
     - name: zmk-pmw3610-driver
       remote: iwk7273
-      revision: main
-    # meteorite-config のみ 2026-06-11 の commit に固定（旧 motion-scaler binding）。
-    # 2026-08-25 の上流リファクタ（custom-config-scaling 廃止 → pointer-profile 等）で
-    # main 追従だと dtsi が非互換になり CI が壊れるため、既知の正常版に固定してドリフトを防止。
+      revision: 8af03264f272dd709f50cca8b80c835294e1f320  # main @ 2026-02-21
     - name: zmk-feature-meteorite-config
       remote: iwk7273
-      revision: b15531e6791a1ad749ef88e42960e78c5582898e
+      revision: 4d2728b77c1fe8374ef94cc3dc6bd88d0c9d1176  # main @ 2026-08-25
     - name: prospector-zmk-module
       remote: prospector
       revision: v2.1.0
