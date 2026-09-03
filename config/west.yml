@@ -22,7 +22,7 @@ manifest:
       revision: 4d2728b77c1fe8374ef94cc3dc6bd88d0c9d1176  # main @ 2026-08-25
     - name: prospector-zmk-module
       remote: prospector
-      revision: v2.1.0
+      revision: v2.2.3  # Scanner Touch 対応の現行版（README 推奨）
       path: modules/prospector-zmk-module
   self:
     path: config
