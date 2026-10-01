@@ -215,5 +215,16 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
+
+        // index 6: オートマウスレイヤー（トラックボール移動で自動起動）
+        layer_6 {
+            display-name = "MOUSE";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &msc SCRL_UP    &msc SCRL_DOWN  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans
+&trans  &trans  &trans  &trans  &trans  &mkp MB1        &mkp MB2        &mkp MB3        &mkp MB4         &mkp MB5
+&trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans          &trans           &trans   &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans
+            >;
+        };
     };
 };

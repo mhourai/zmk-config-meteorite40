@@ -161,7 +161,11 @@
         compatible = "zmk,input-listener";
         device = <&sensor_rotation>;
 
+        /* &zip_temp_layer <layer> <timeout_ms>:
+         * トラックボール移動でレイヤー6(MOUSE)を自動起動し、停止後10秒で解除（オートマウスレイヤー）。
+         * meteorite40 のみ layer 6 を持つため有効（low は layer 6 が無く no-op）。 */
         input-processors = <&ball_profile_router>,
-                           <&motion_scaler>;
+                           <&motion_scaler>,
+                           <&zip_temp_layer 6 10000>;
     };
 };
