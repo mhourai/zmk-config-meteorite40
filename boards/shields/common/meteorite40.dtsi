@@ -180,7 +180,7 @@
     require-prior-idle-ms = <200>;
 };
 
-/* クリック(&mkp)入力でもマウスレイヤーを維持・延長する。 */
-&mkp_input_listener {
-    input-processors = <&zip_temp_layer 6 10000>;
-};
+/* 補足: クリック(&mkp)でもタイムアウトを延長したい場合は、behaviors.dtsi を include する
+ * keymap 側に次を追加する（共通dtsiでは mkp_input_listener が未定義でエラーになるため）:
+ *   &mkp_input_listener { input-processors = <&zip_temp_layer 6 10000>; };
+ */
