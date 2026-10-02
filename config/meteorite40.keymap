@@ -84,26 +84,8 @@
 
         esc {
             bindings = <&kp ESCAPE>;
-            key-positions = <20 21>; /* Z + X */
+            key-positions = <1 0>; /* Z + X */
             layers = <0>;
-        };
-
-        tab {
-            bindings = <&kp TAB>;
-            key-positions = <0 1>; /* Q + W */
-            layers = <0>;
-        };
-
-        line_home {
-            bindings = <&mosk HOME LG(LEFT)>;
-            key-positions = <16 17>; /* J + K (on layer 2) */
-            layers = <2>;
-        };
-
-        line_end {
-            bindings = <&mosk END LG(RIGHT)>;
-            key-positions = <18 19>; /* L + - (on layer 2) */
-            layers = <2>;
         };
 
         doc_home {
@@ -134,7 +116,7 @@
 
             sensor-bindings =
                 <&mouse_scroll_var SCRL_RIGHT SCRL_LEFT>,
-                // RE0(左): 時計回/右スクロール、反時計回/左スクロール,,,,,,,,,,,
+                // RE0(左): 時計回/右スクロール、反時計回/左スクロール,,,,,,,,,,,,
                 <&mouse_scroll_var SCRL_UP SCRL_DOWN>;
 
             // RE1(右): 時計回/上スクロール、反時計回/下スクロール
@@ -153,7 +135,7 @@
 
             sensor-bindings =
                 <&mouse_scroll_var SCRL_UP SCRL_DOWN>,
-                // RE1(右): 時計回/上スクロール、反時計回/下スクロール,,,,,,,,,,,
+                // RE1(右): 時計回/上スクロール、反時計回/下スクロール,,,,,,,,,,,,
                 <&mouse_scroll_var SCRL_RIGHT SCRL_LEFT>;
 
             // RE0(左): 時計回/右スクロール、反時計回/左スクロール
@@ -172,7 +154,7 @@
 
             sensor-bindings =
                 <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,,,,,,,,,,,
+                // RE0: ctrl + - / +,,,,,,,,,,,,,,,
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // RE1: volume down/up
@@ -189,7 +171,7 @@
 
             sensor-bindings =
                 <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
-                // RE0: ctrl + - / +,,,,,,,,,,,,,,
+                // RE0: ctrl + - / +,,,,,,,,,,,,,,,
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 
             // RE1: volume down/up
