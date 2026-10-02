@@ -129,10 +129,12 @@
     ball_profile_defaults: ball_profile_defaults {
         compatible = "zmk,ball-profile-defaults";
         /* レイヤ index 順: 0=BASE 1=SYMBOLS 2=NUM/ARROW 3=FUNCTION 4=SETTING
-         * 5=SCROLL 6=RESERVE 7=RESERVE。
-         * レイヤー5のみ SCROLL、他は OFF（通常カーソル）。 */
+         * 5=MOUSE(オートマウス) 6=SCROLL 7=RESERVE。
+         * active profile は「最上位の有効レイヤー」で決まるため、SCROLL(6) を
+         * OFF の MOUSE(5) より上位に置く。これで U ホールド(レイヤー6)中は
+         * オートマウス(レイヤー5)が同時に起動していてもスクロールが勝つ。 */
         layer-profiles = <BALL_OFF BALL_OFF BALL_OFF BALL_OFF BALL_OFF
-                          BALL_SCROLL BALL_OFF BALL_OFF>;
+                          BALL_OFF BALL_SCROLL BALL_OFF>;
         sensitivity = <BALL_SENS_NORMAL>;
     };
 
@@ -162,11 +164,11 @@
         device = <&sensor_rotation>;
 
         /* &zip_temp_layer <layer> <timeout_ms>:
-         * トラックボール移動でレイヤー6(MOUSE)を自動起動し、停止後10秒で解除（オートマウスレイヤー）。
-         * meteorite40 のみ layer 6 を持つため有効（low は layer 6 が無く no-op）。 */
+         * トラックボール移動でレイヤー5(MOUSE)を自動起動し、停止後10秒で解除（オートマウスレイヤー）。
+         * meteorite40 のみ layer 5 を持つため有効（low は layer 5 が無く no-op）。 */
         input-processors = <&ball_profile_router>,
                            <&motion_scaler>,
-                           <&zip_temp_layer 6 10000>;
+                           <&zip_temp_layer 5 10000>;
     };
 };
 
@@ -174,7 +176,8 @@
 &zip_temp_layer {
     /* ここに挙げたキー位置を押してもマウスレイヤーを維持（＝とどまる条件）。
      * それ以外のキーを押すと即座にマウスレイヤーを解除（＝すぐ離脱する条件）。
-     * 位置は layer_6(MOUSE) の配置に対応: 5-8=スクロール, 15-19=クリック(MB1-MB5)。 */
+     * 位置は layer_5(MOUSE) の配置に対応（keymap-editor で MOUSE レイヤーを
+     * 編集したら、この番号も実際のキー位置に合わせて更新すること）。 */
     excluded-positions = <5 33>;
     /* 直前 200ms 以内に通常キー入力があればマウスレイヤーを起動しない（タイピング中の誤爆防止）。 */
     require-prior-idle-ms = <200>;
@@ -182,5 +185,5 @@
 
 /* 補足: クリック(&mkp)でもタイムアウトを延長したい場合は、behaviors.dtsi を include する
  * keymap 側に次を追加する（共通dtsiでは mkp_input_listener が未定義でエラーになるため）:
- *   &mkp_input_listener { input-processors = <&zip_temp_layer 6 10000>; };
+ *   &mkp_input_listener { input-processors = <&zip_temp_layer 5 10000>; };
  */
